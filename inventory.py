@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import json
 
 inventory = {
-    "ubuntu_hosts": {
+    "all": {
         "hosts": ["10.1.3.51", "10.1.3.23", "10.1.3.138"]
     }
 }
