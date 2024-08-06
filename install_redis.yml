@@ -1,9 +1,10 @@
 ---
 - name: Install Redis on Ubuntu
-  hosts: ubuntu
+  hosts: ubuntu_hosts
   become: yes
+
   tasks:
-    - name: Update apt cache
+    - name: Update APT package index
       apt:
         update_cache: yes
 
@@ -12,7 +13,7 @@
         name: redis-server
         state: present
 
-    - name: Ensure Redis is running
+    - name: Ensure Redis is running and enabled on boot
       service:
         name: redis-server
         state: started
