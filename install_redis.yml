@@ -1,20 +1,16 @@
 ---
-- name: Install Redis on Ubuntu
-  hosts: ubuntu_hosts
-  become: yes
-
+- name: Install Redis on Ubuntu and Debian
+  hosts: all
+  become: true
   tasks:
-    - name: Update APT package index
-      apt:
-        update_cache: yes
-
     - name: Install Redis
       apt:
         name: redis-server
         state: present
+      when: ansible_os_family in ['Debian']
 
-    - name: Ensure Redis is running and enabled on boot
+    - name: Ensure Redis is running and enabled
       service:
         name: redis-server
         state: started
-        enabled: yes
+        enabled: true
